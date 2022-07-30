@@ -4,10 +4,10 @@ import React from "react";
 import { View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import SignUp from "./src/screens/SignUp";
-import SignIn from "./src/screens/SignIn";
-import ResetPassword from "./src/screens/ResetPassword";
-import EmailVerify from "./src/screens/EmailVerify";
+// import SignUp from "./src/screens/SignUp";
+// import SignIn from "./src/screens/SignIn";
+// import ResetPassword from "./src/screens/ResetPassword";
+// import EmailVerify from "./src/screens/EmailVerify";
 import Welcome from "./src/screens/Welcome";
 
 const App = () => {
