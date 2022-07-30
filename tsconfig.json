@@ -8,7 +8,7 @@
     "lib": ["es6", "esnext.asynciterable", "es2017"],
     "strict": true,
     "esModuleInterop": true,
-    "rootDir": "src",
+    // "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
