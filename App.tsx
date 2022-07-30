@@ -1,14 +1,26 @@
-import React from "react";
-import { View } from "react-native";
-import SignUp from "./src/screens/SignUp";
 import { styles } from "./src/styles/global-styles";
-// import Welcome from "./src/screens/Welcome";
+import React from "react";
+
+import { View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import SignUp from "./src/screens/SignUp";
+import SignIn from "./src/screens/SignIn";
+import ResetPassword from "./src/screens/ResetPassword";
+import EmailVerify from "./src/screens/EmailVerify";
+import Welcome from "./src/screens/Welcome";
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <SignUp />
-    </View>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        {/* <EmailVerify /> */}
+        {/* <SignIn /> */}
+        {/* <SignUp /> */}
+        {/* <ResetPassword /> */}
+        <Welcome />
+      </View>
+    </SafeAreaProvider>
   );
 };
 

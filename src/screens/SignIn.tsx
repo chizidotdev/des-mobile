@@ -1,4 +1,4 @@
-import { styles } from "../styles/signup-styles";
+import { styles } from "../styles/signin-styles";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import React, { useState } from "react";
@@ -9,8 +9,7 @@ import InputUI from "../components/UI/Input";
 import LinkUI from "../components/UI/Link";
 import ButtonUI from "../components/UI/Button";
 
-const SignUp = () => {
-  const [name, setName] = useState("");
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,15 +17,9 @@ const SignUp = () => {
     <SafeAreaView style={styles.formContainer}>
       {/* <ScrollView style={styles.formContainer}> */}
       <Text h2 style={styles.heading}>
-        Sign Up
+        Login
       </Text>
       <View>
-        <InputUI
-          label="Full name"
-          value={name}
-          setValue={setName}
-          placeholder="Enter your name"
-        />
         <InputUI
           label="E-mail"
           value={email}
@@ -41,16 +34,21 @@ const SignUp = () => {
         />
         {/* {state.errorMessage ? <Text>{state.errorMessage}</Text> : null} */}
       </View>
-      <ButtonUI style={{ width: "80%" }}>Sign Up</ButtonUI>
 
       <View style={styles.login}>
-        <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
-        <LinkUI>Login</LinkUI>
+        <LinkUI>Forgot password?</LinkUI>
+      </View>
+
+      <ButtonUI style={{ width: "80%" }}>Login</ButtonUI>
+
+      <View style={styles.login}>
+        <Text style={styles.loginText}>Don&apos;t have an account?&nbsp;</Text>
+        <LinkUI>Sign Up</LinkUI>
       </View>
 
       <View style={styles.divider}>
         <View style={styles.dividerLine} />
-        <Text style={styles.dividerText}>sign up with </Text>
+        <Text style={styles.dividerText}>sign in with </Text>
         <View style={styles.dividerLine} />
       </View>
 
@@ -69,4 +67,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
