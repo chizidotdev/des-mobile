@@ -25,19 +25,21 @@ export const styles = StyleSheet.create({
   },
   login: {
     alignSelf: "center",
+    flexDirection: "row",
   },
+  loginText: {},
   divider: {
     width: "80%",
     alignSelf: "center",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: "7%",
   },
   dividerLine: {
-    width: "80px",
-    height: "1px",
+    width: 80,
+    height: 1,
     backgroundColor: "#CFCFCF",
+    marginHorizontal: 20,
   },
   dividerText: {
     color: "#858585",

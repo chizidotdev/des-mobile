@@ -22,17 +22,19 @@ const Welcome = () => {
         </View>
         <View style={styles.buttons}>
           <ButtonUI variant="transparent">
-            <FontAwesome5 name="facebook" /> &nbsp;Facebook
+            <FontAwesome5 name="facebook" />
+            <Text>&nbsp;Facebook</Text>
           </ButtonUI>
           <ButtonUI variant="transparent">
-            <FontAwesome5 name="google" /> &nbsp;Google
+            <FontAwesome5 name="google" />
+            <Text>&nbsp;Google</Text>
           </ButtonUI>
         </View>
         <ButtonUI style={styles.start}>Start with email or phone</ButtonUI>
-        <Text style={styles.login}>
-          Already have an account?
-          <LinkUI style={{ textDecoration: "underline" }}>&nbsp;Sign In</LinkUI>
-        </Text>
+        <View style={styles.login}>
+          <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
+          <LinkUI style={{ textDecorationLine: "underline" }}>Sign In</LinkUI>
+        </View>
         <StatusBar style="auto" />
       </View>
     </View>

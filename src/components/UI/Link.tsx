@@ -1,4 +1,4 @@
-import { StyleProp, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleProp, StyleSheet, Text, View } from "react-native";
 
 interface LinkProps {
   children: React.ReactNode;
@@ -7,9 +7,9 @@ interface LinkProps {
 
 const LinkUI = ({ children, style }: LinkProps) => {
   return (
-    <TouchableOpacity style={[styles.linkStyle, style]}>
-      {children}
-    </TouchableOpacity>
+    <View>
+      <Text style={[styles.linkStyle, style]}>{children}</Text>
+    </View>
   );
 };
 
