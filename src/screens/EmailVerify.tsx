@@ -3,7 +3,7 @@ import { styles } from "../styles/reset-password-styles";
 
 import { View, SafeAreaView, Image } from "react-native";
 import { Text } from "@rneui/themed";
-import LinkUI from "../components/UI/Link";
+import ButtonUI from "../components/UI/Button";
 
 const EmailVerify = () => {
   return (
@@ -23,7 +23,7 @@ const EmailVerify = () => {
 
       <View style={styles.resend}>
         <Text>Didn&apos;t receive an email?&nbsp;</Text>
-        <LinkUI>Resend</LinkUI>
+        <ButtonUI type="link">Resend</ButtonUI>
       </View>
 
       {/* </ScrollView> */}
