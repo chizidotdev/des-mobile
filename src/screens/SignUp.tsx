@@ -37,6 +37,7 @@ const SignUp = () => {
           value={password}
           setValue={setPassword}
           placeholder="Enter a password"
+          secure
         />
         {/* {state.errorMessage ? <Text>{state.errorMessage}</Text> : null} */}
       </View>

@@ -7,6 +7,7 @@ interface InputProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
+  secure?: boolean;
 }
 
 const InputUI: React.FC<InputProps> = ({
@@ -14,6 +15,7 @@ const InputUI: React.FC<InputProps> = ({
   value,
   setValue,
   placeholder,
+  secure,
 }) => {
   return (
     <View style={styles.inputContainer}>
@@ -30,7 +32,7 @@ const InputUI: React.FC<InputProps> = ({
           autoComplete="off"
           clearButtonMode="while-editing"
           enablesReturnKeyAutomatically
-          textContentType="password"
+          secureTextEntry={secure}
           // onFocus={}
         />
       </View>
