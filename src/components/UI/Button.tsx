@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import React, { ReactNode } from "react";
-import { withNavigation } from "react-navigation";
+// import { withNavigation } from "react-navigation";
 
 interface ButtonProps {
   children: ReactNode;
@@ -91,4 +91,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(ButtonUI);
+export default ButtonUI;
+// export default withNavigation(ButtonUI);
