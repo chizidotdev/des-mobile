@@ -35,7 +35,9 @@ const SignIn = () => {
       </View>
 
       <View style={styles.login}>
-        <ButtonUI type="link">Forgot password?</ButtonUI>
+        <ButtonUI to="ResetPassword" type="link">
+          Forgot password?
+        </ButtonUI>
       </View>
 
       <ButtonUI style={{ width: "80%" }}>Login</ButtonUI>
