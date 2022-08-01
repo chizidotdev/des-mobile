@@ -1,13 +1,41 @@
-import { Pressable, StyleProp, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { ReactNode } from "react";
+import { withNavigation } from "react-navigation";
 
 interface ButtonProps {
   children: ReactNode;
   variant?: "fill" | "transparent" | null;
   style?: StyleProp<any>;
+  type?: "link" | "button";
+  to?: string;
+  navigation?: any;
 }
 
-const ButtonUI = ({ children, style, variant }: ButtonProps) => {
+const ButtonUI = ({
+  children,
+  style,
+  variant,
+  type,
+  to,
+  navigation,
+}: ButtonProps) => {
+  if (type === "link") {
+    return (
+      <TouchableOpacity onPress={() => to && navigation?.navigate(to)}>
+        <View>
+          <Text style={[styles.linkStyle, style]}>{children}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <View
       style={
@@ -16,7 +44,7 @@ const ButtonUI = ({ children, style, variant }: ButtonProps) => {
           : [styles.button, style]
       }
     >
-      <Pressable>
+      <Pressable onPress={() => to && navigation?.navigate(to)}>
         <Text
           style={
             variant === "transparent"
@@ -58,6 +86,9 @@ const styles = StyleSheet.create({
   transparentText: {
     color: "black",
   },
+  linkStyle: {
+    color: "#FA7913",
+  },
 });
 
-export default ButtonUI;
+export default withNavigation(ButtonUI);

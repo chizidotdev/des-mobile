@@ -5,7 +5,6 @@ import ButtonUI from "../components/UI/Button";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import { styles } from "../styles/welcome-styles";
-import LinkUI from "../components/UI/Link";
 
 const Welcome = () => {
   return (
@@ -30,10 +29,18 @@ const Welcome = () => {
             <Text>&nbsp;Google</Text>
           </ButtonUI>
         </View>
-        <ButtonUI style={styles.start}>Start with email or phone</ButtonUI>
+        <ButtonUI to="SignUp" style={styles.start}>
+          Start with email or phone
+        </ButtonUI>
         <View style={styles.login}>
           <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
-          <LinkUI style={{ textDecorationLine: "underline" }}>Sign In</LinkUI>
+          <ButtonUI
+            type="link"
+            to="SignIn"
+            style={{ textDecorationLine: "underline" }}
+          >
+            Sign In
+          </ButtonUI>
         </View>
         <StatusBar style="auto" />
       </View>

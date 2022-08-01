@@ -6,7 +6,6 @@ import { View, SafeAreaView } from "react-native";
 import { Text } from "@rneui/themed";
 
 import InputUI from "../components/UI/Input";
-import LinkUI from "../components/UI/Link";
 import ButtonUI from "../components/UI/Button";
 
 const SignUp = () => {
@@ -45,7 +44,9 @@ const SignUp = () => {
 
       <View style={styles.login}>
         <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
-        <LinkUI>Login</LinkUI>
+        <ButtonUI type="link" to="SignIn">
+          Login
+        </ButtonUI>
       </View>
 
       <View style={styles.divider}>

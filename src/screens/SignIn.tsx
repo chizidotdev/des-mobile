@@ -6,7 +6,6 @@ import { View, SafeAreaView } from "react-native";
 import { Text } from "@rneui/themed";
 
 import InputUI from "../components/UI/Input";
-import LinkUI from "../components/UI/Link";
 import ButtonUI from "../components/UI/Button";
 
 const SignIn = () => {
@@ -36,14 +35,16 @@ const SignIn = () => {
       </View>
 
       <View style={styles.login}>
-        <LinkUI>Forgot password?</LinkUI>
+        <ButtonUI type="link">Forgot password?</ButtonUI>
       </View>
 
       <ButtonUI style={{ width: "80%" }}>Login</ButtonUI>
 
       <View style={styles.login}>
         <Text style={styles.loginText}>Don&apos;t have an account?&nbsp;</Text>
-        <LinkUI>Sign Up</LinkUI>
+        <ButtonUI type="link" to="SignUp">
+          Sign Up
+        </ButtonUI>
       </View>
 
       <View style={styles.divider}>
