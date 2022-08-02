@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useState } from "react";
-import { CartCard } from "../../components/ProductCard";
+import { CartCard } from "../../components/Cards/CartCard";
 import InputUI from "../../components/UI/Input";
 import ButtonUI from "../../components/UI/Button";
 

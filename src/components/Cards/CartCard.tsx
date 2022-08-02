@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import Icon from "./UI/Icon";
+import Icon from "../UI/Icon";
 
 interface CartCardProps {
   title?: string;
@@ -14,7 +14,7 @@ export const CartCard = ({ title, desc, price, qty }: CartCardProps) => {
     <View style={styles.container}>
       <View style={styles.left}>
         <Image
-          source={require("../assets/ipad-mini.png")}
+          source={require("../../assets/ipad-mini.png")}
           style={styles.imgStyle}
         />
       </View>

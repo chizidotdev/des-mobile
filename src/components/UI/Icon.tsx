@@ -6,25 +6,27 @@ interface IconProps {
   name: string;
   variant?: "fill" | "transparent";
   size?: number;
+  color?: string;
 }
 
-const Icon = ({ name, variant, size }: IconProps) => {
+const Icon = ({ name, variant, size, color }: IconProps) => {
   if (variant === "transparent") {
     return (
       <View
-        style={[
-          styles.container,
-          { borderWidth: 1, borderColor: "#FA7913", borderRadius: 100 },
-        ]}
+        style={[styles.container, styles.transparent, { borderColor: color }]}
       >
-        <FontAwesome5 name={name} color="#FA7913" size={size ? size : 12} />
+        <FontAwesome5
+          name={name}
+          color={color ? color : "#FA7913"}
+          size={size ? size : 12}
+        />
       </View>
     );
   }
 
   if (variant === "fill") {
     return (
-      <View style={[styles.container, styles.fill]}>
+      <View style={[styles.container, styles.fill, { backgroundColor: color }]}>
         <FontAwesome5 name={name} color="#fff" size={size ? size : 12} />
       </View>
     );
@@ -32,7 +34,11 @@ const Icon = ({ name, variant, size }: IconProps) => {
 
   return (
     <View style={styles.container}>
-      <FontAwesome5 name={name} color="#FA7913" size={size ? size : 16} />
+      <FontAwesome5
+        name={name}
+        color={color ? color : "#FA7913"}
+        size={size ? size : 16}
+      />
     </View>
   );
 };
@@ -48,8 +54,8 @@ const styles = StyleSheet.create({
   },
   fill: {
     borderWidth: 1,
-    borderColor: "#FA7913",
+
     borderRadius: 100,
-    backgroundColor: "#FA7913",
   },
+  transparent: { borderWidth: 1, borderRadius: 100 },
 });
