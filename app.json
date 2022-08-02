@@ -26,6 +26,7 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "build": { "babel": { "include": ["@rneui/base"] } }
   }
 }
