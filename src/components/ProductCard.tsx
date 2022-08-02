@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   imgStyle: {
     width: 100,
-    height: 200,
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
@@ -66,7 +66,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   left: { flex: 1 },
-  right: { flex: 1, justifyContent: "space-between", marginVertical: 5 },
+  right: {
+    flex: 1,
+    justifyContent: "space-between",
+    marginVertical: 5,
+    marginRight: 10,
+  },
   title: { fontSize: 16, fontWeight: "700" },
   desc: { fontSize: 14 },
   price: { fontSize: 16, fontWeight: "500", color: "#FA7913" },
