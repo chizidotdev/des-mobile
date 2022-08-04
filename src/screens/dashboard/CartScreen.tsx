@@ -45,19 +45,31 @@ const CartScreen = () => {
       <View style={styles.detailsContainer}>
         <View style={styles.details}>
           <Text>Subtotal</Text>
-          <Text>$1397.30</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text>$1397.30</Text>
+            <Text style={{ color: "#9796A1" }}>&nbsp;USD</Text>
+          </View>
         </View>
         <View style={styles.details}>
           <Text>Tax and Fees</Text>
-          <Text>$5.30</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text>$5.30</Text>
+            <Text style={{ color: "#9796A1" }}>&nbsp;USD</Text>
+          </View>
         </View>
         <View style={styles.details}>
           <Text>Delivery</Text>
-          <Text>$14.60</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text>$14.60</Text>
+            <Text style={{ color: "#9796A1" }}>&nbsp;USD</Text>
+          </View>
         </View>
         <View style={styles.details}>
           <Text>Total</Text>
-          <Text>${cartData.reduce((acc, item) => acc + item.price, 0)}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text>${cartData.reduce((acc, item) => acc + item.price, 0)}</Text>
+            <Text style={{ color: "#9796A1" }}>&nbsp;USD</Text>
+          </View>
         </View>
       </View>
       <View>

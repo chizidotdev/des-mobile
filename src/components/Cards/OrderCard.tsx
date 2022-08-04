@@ -94,7 +94,10 @@ export const ActiveOrderCard = ({
 
       <View style={[styles.statusCategory, { marginVertical: 20 }]}>
         <TextElement h3>2 days</TextElement>
-        <TextElement h4>Delivery</TextElement>
+        <View>
+          <TextElement>Front-end design</TextElement>
+          <TextElement>completed</TextElement>
+        </View>
       </View>
 
       <View style={styles.btn}>

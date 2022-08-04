@@ -4,6 +4,7 @@ import {
   ActiveOrderCard,
   CompletedOrderCard,
 } from "../../components/Cards/OrderCard";
+import { ScrollView } from "react-native-gesture-handler";
 
 const completedOrders = [
   {
@@ -37,17 +38,23 @@ const activeOrders = [
 
 const Orders = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.status}>
-        <Text>Active</Text>
-        <Text>Completed</Text>
-      </View>
-      <View>
-        <ActiveOrderCard />
-        <ActiveOrderCard />
-        <ActiveOrderCard />
-      </View>
-    </SafeAreaView>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.statusContainer}>
+          <View style={[styles.status, { backgroundColor: "#FA7913" }]}>
+            <Text style={[styles.statusText, { color: "#fff" }]}>Active</Text>
+          </View>
+          <View style={styles.status}>
+            <Text style={styles.statusText}>Completed</Text>
+          </View>
+        </View>
+        <View>
+          <CompletedOrderCard />
+          <CompletedOrderCard />
+          <CompletedOrderCard />
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -58,7 +65,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9",
     flex: 1,
   },
-  status: {
+  statusContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 20,
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: "#F2EAEA",
+  },
+  status: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
+  },
+  statusText: {
+    margin: 15,
+    color: "#FA7913",
+    // fontSize: 16,
   },
 });

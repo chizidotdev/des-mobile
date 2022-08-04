@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import { FontAwesome5 } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 interface IconProps {
   name: string;
@@ -9,13 +9,17 @@ interface IconProps {
   color?: string;
 }
 
-const Icon = ({ name, variant, size, color }: IconProps) => {
+const IconUI = ({ name, variant, size, color }: IconProps) => {
   if (variant === "transparent") {
     return (
       <View
-        style={[styles.container, styles.transparent, { borderColor: color }]}
+        style={[
+          styles.container,
+          styles.transparent,
+          { borderColor: color ? color : "#FA7913" },
+        ]}
       >
-        <FontAwesome5
+        <Icon
           name={name}
           color={color ? color : "#FA7913"}
           size={size ? size : 12}
@@ -26,15 +30,24 @@ const Icon = ({ name, variant, size, color }: IconProps) => {
 
   if (variant === "fill") {
     return (
-      <View style={[styles.container, styles.fill, { backgroundColor: color }]}>
-        <FontAwesome5 name={name} color="#fff" size={size ? size : 12} />
+      <View
+        style={[
+          styles.container,
+          styles.fill,
+          {
+            backgroundColor: color ? color : "#FA7913",
+            borderColor: color ? color : "#FA7913",
+          },
+        ]}
+      >
+        <Icon name={name} color="#fff" size={size ? size : 12} />
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <FontAwesome5
+      <Icon
         name={name}
         color={color ? color : "#FA7913"}
         size={size ? size : 16}
@@ -43,7 +56,7 @@ const Icon = ({ name, variant, size, color }: IconProps) => {
   );
 };
 
-export default Icon;
+export default IconUI;
 
 const styles = StyleSheet.create({
   container: {
@@ -54,7 +67,6 @@ const styles = StyleSheet.create({
   },
   fill: {
     borderWidth: 1,
-
     borderRadius: 100,
   },
   transparent: { borderWidth: 1, borderRadius: 100 },

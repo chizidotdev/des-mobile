@@ -16,6 +16,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View } from "react-native";
 import { styles } from "./src/styles/global-styles";
 import Orders from "./src/screens/dashboard/Orders";
+import CartScreen from "./src/screens/dashboard/CartScreen";
 
 const switchNavigator = createSwitchNavigator({
   authFlow: createStackNavigator(
