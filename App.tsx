@@ -18,6 +18,7 @@ import { styles } from "./src/styles/global-styles";
 import Orders from "./src/screens/dashboard/Orders";
 import CartScreen from "./src/screens/dashboard/CartScreen";
 import Store from "./src/screens/Store";
+import ProductDetail from "./src/screens/ProductDetail";
 
 const switchNavigator = createSwitchNavigator({
   authFlow: createStackNavigator(
@@ -48,7 +49,7 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <Store />
+        <ProductDetail />
       </View>
     </SafeAreaProvider>
   );
