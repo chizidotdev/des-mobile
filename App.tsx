@@ -47,7 +47,7 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <Orders />
+        <Favourites />
       </View>
     </SafeAreaProvider>
   );

@@ -1,21 +1,24 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { ViewStyle } from "react-native";
 
 interface IconProps {
   name: string;
   variant?: "fill" | "transparent";
   size?: number;
   color?: string;
+  style?: ViewStyle;
 }
 
-const IconUI = ({ name, variant, size, color }: IconProps) => {
+const IconUI = ({ name, variant, size, color, style }: IconProps) => {
   if (variant === "transparent") {
     return (
       <View
         style={[
           styles.container,
           styles.transparent,
+          style,
           { borderColor: color ? color : "#FA7913" },
         ]}
       >
@@ -34,6 +37,7 @@ const IconUI = ({ name, variant, size, color }: IconProps) => {
         style={[
           styles.container,
           styles.fill,
+          style,
           {
             backgroundColor: color ? color : "#FA7913",
             borderColor: color ? color : "#FA7913",
@@ -46,7 +50,7 @@ const IconUI = ({ name, variant, size, color }: IconProps) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Icon
         name={name}
         color={color ? color : "#FA7913"}
