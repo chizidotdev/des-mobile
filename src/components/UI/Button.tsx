@@ -1,6 +1,6 @@
 import { Pressable, StyleProp, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { ReactNode } from "react";
-// import { withNavigation } from "react-navigation";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 
 interface ButtonProps {
   children: ReactNode;
@@ -8,13 +8,18 @@ interface ButtonProps {
   style?: StyleProp<any>;
   type?: "link" | "button";
   to?: string;
-  navigation?: any;
 }
 
-const ButtonUI = ({ children, style, variant, type, to, navigation }: ButtonProps) => {
+const ButtonUI = ({ children, style, variant, type, to: key }: ButtonProps) => {
+  const navigation = useNavigation();
+
+  const handleNavigate = (key: string) => {
+    navigation.dispatch(CommonActions.navigate({ name: key }));
+  };
+
   if (type === "link") {
     return (
-      <TouchableOpacity onPress={() => to && navigation?.navigate(to)}>
+      <TouchableOpacity onPress={() => key && handleNavigate(key)}>
         <View>
           <Text style={[styles.linkStyle, style]}>{children}</Text>
         </View>
@@ -30,7 +35,7 @@ const ButtonUI = ({ children, style, variant, type, to, navigation }: ButtonProp
           : [styles.button, style]
       }
     >
-      <Pressable onPress={() => to && navigation?.navigate(to)}>
+      <Pressable onPress={() => key && key && handleNavigate(key)}>
         <Text
           style={variant === "transparent" ? [styles.text, styles.transparentText] : [styles.text]}
         >

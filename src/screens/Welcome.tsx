@@ -1,3 +1,5 @@
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+
 import { Image, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
@@ -5,14 +7,14 @@ import ButtonUI from "../components/UI/Button";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import { styles } from "../styles/welcome-styles";
+import { AuthStackParamList } from "App";
 
-const Welcome = () => {
+type WelcomeScreenProps = NativeStackScreenProps<AuthStackParamList, "Welcome">;
+
+const Welcome = ({ navigation }: WelcomeScreenProps) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/des-logo-xl.png")}
-        style={styles.logoStyle}
-      />
+      <Image source={require("../assets/des-logo-xl.png")} style={styles.logoStyle} />
       <View style={styles.body}>
         <View style={styles.divider}>
           <View style={styles.dividerLine} />
@@ -29,16 +31,13 @@ const Welcome = () => {
             <Text>&nbsp;Google</Text>
           </ButtonUI>
         </View>
-        <ButtonUI to="SignUp" style={styles.start}>
+        <ButtonUI to="Home" style={styles.start}>
           Start with email or phone
         </ButtonUI>
+        {/* <Button title="Home" onPress={() => navigation.navigate("SignIn")} /> */}
         <View style={styles.login}>
           <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
-          <ButtonUI
-            type="link"
-            to="SignIn"
-            style={{ textDecorationLine: "underline" }}
-          >
+          <ButtonUI type="link" to="SignIn" style={{ textDecorationLine: "underline" }}>
             Sign In
           </ButtonUI>
         </View>
