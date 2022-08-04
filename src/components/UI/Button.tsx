@@ -1,11 +1,4 @@
-import {
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Pressable, StyleProp, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { ReactNode } from "react";
 // import { withNavigation } from "react-navigation";
 
@@ -18,14 +11,7 @@ interface ButtonProps {
   navigation?: any;
 }
 
-const ButtonUI = ({
-  children,
-  style,
-  variant,
-  type,
-  to,
-  navigation,
-}: ButtonProps) => {
+const ButtonUI = ({ children, style, variant, type, to, navigation }: ButtonProps) => {
   if (type === "link") {
     return (
       <TouchableOpacity onPress={() => to && navigation?.navigate(to)}>
@@ -46,11 +32,7 @@ const ButtonUI = ({
     >
       <Pressable onPress={() => to && navigation?.navigate(to)}>
         <Text
-          style={
-            variant === "transparent"
-              ? [styles.text, styles.transparentText]
-              : [styles.text]
-          }
+          style={variant === "transparent" ? [styles.text, styles.transparentText] : [styles.text]}
         >
           {children}
         </Text>
@@ -75,7 +57,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 5,
   },
   text: {
-    fontSize: 16,
     lineHeight: 21,
     letterSpacing: 0.25,
     color: "white",

@@ -8,18 +8,26 @@ interface IconProps {
   variant?: "fill" | "transparent";
   size?: number;
   color?: string;
+  textColor?: string;
   style?: ViewStyle;
 }
 
-const IconUI = ({ name, variant, size, color, style }: IconProps) => {
+const IconUI = ({
+  name,
+  variant,
+  size,
+  color,
+  style,
+  textColor,
+}: IconProps) => {
   if (variant === "transparent") {
     return (
       <View
         style={[
           styles.container,
           styles.transparent,
-          style,
           { borderColor: color ? color : "#FA7913" },
+          style,
         ]}
       >
         <Icon
@@ -37,14 +45,18 @@ const IconUI = ({ name, variant, size, color, style }: IconProps) => {
         style={[
           styles.container,
           styles.fill,
-          style,
           {
             backgroundColor: color ? color : "#FA7913",
             borderColor: color ? color : "#FA7913",
           },
+          style,
         ]}
       >
-        <Icon name={name} color="#fff" size={size ? size : 12} />
+        <Icon
+          name={name}
+          color={textColor ? textColor : "#fff"}
+          size={size ? size : 12}
+        />
       </View>
     );
   }
