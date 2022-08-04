@@ -1,15 +1,15 @@
 import React from "react";
-import { styles } from "../styles/reset-password-styles";
+import { styles } from "../../styles/reset-password-styles";
 
 import { View, SafeAreaView, Image } from "react-native";
 import { Text } from "@rneui/themed";
-import ButtonUI from "../components/UI/Button";
+import ButtonUI from "../../components/UI/Button";
 
 const EmailVerify = () => {
   return (
     <SafeAreaView style={styles.formContainer}>
       <Image
-        source={require("../assets/des-logo-xl.png")}
+        source={require("../../assets/des-logo-xl.png")}
         style={styles.logoStyle}
       />
       {/* <ScrollView style={styles.formContainer}> */}

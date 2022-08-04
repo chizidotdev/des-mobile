@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { styles } from "../styles/reset-password-styles";
+import { styles } from "../../styles/reset-password-styles";
 
 import { View, SafeAreaView, Image } from "react-native";
 import { Text } from "@rneui/themed";
 
-import InputUI from "../components/UI/Input";
-import ButtonUI from "../components/UI/Button";
+import InputUI from "../../components/UI/Input";
+import ButtonUI from "../../components/UI/Button";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const ResetPassword = () => {
   return (
     <SafeAreaView style={styles.formContainer}>
       <Image
-        source={require("../assets/des-logo-xl.png")}
+        source={require("../../assets/des-logo-xl.png")}
         style={styles.logoStyle}
       />
       {/* <ScrollView style={styles.formContainer}> */}

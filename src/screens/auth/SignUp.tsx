@@ -1,14 +1,15 @@
-import { styles } from "../styles/signin-styles";
+import { styles } from "../../styles/signup-styles";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import React, { useState } from "react";
 import { View, SafeAreaView } from "react-native";
 import { Text } from "@rneui/themed";
 
-import InputUI from "../components/UI/Input";
-import ButtonUI from "../components/UI/Button";
+import InputUI from "../../components/UI/Input";
+import ButtonUI from "../../components/UI/Button";
 
-const SignIn = () => {
+const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,9 +17,15 @@ const SignIn = () => {
     <SafeAreaView style={styles.formContainer}>
       {/* <ScrollView style={styles.formContainer}> */}
       <Text h2 style={styles.heading}>
-        Login
+        Sign Up
       </Text>
       <View>
+        <InputUI
+          label="Full name"
+          value={name}
+          setValue={setName}
+          placeholder="Enter your name"
+        />
         <InputUI
           label="E-mail"
           value={email}
@@ -34,25 +41,18 @@ const SignIn = () => {
         />
         {/* {state.errorMessage ? <Text>{state.errorMessage}</Text> : null} */}
       </View>
+      <ButtonUI style={{ width: "80%" }}>Sign Up</ButtonUI>
 
       <View style={styles.login}>
-        <ButtonUI to="ResetPassword" type="link">
-          Forgot password?
-        </ButtonUI>
-      </View>
-
-      <ButtonUI style={{ width: "80%" }}>Login</ButtonUI>
-
-      <View style={styles.login}>
-        <Text style={styles.loginText}>Don&apos;t have an account?&nbsp;</Text>
-        <ButtonUI type="link" to="SignUp">
-          Sign Up
+        <Text style={styles.loginText}>Already have an account?&nbsp;</Text>
+        <ButtonUI type="link" to="SignIn">
+          Login
         </ButtonUI>
       </View>
 
       <View style={styles.divider}>
         <View style={styles.dividerLine} />
-        <Text style={styles.dividerText}>sign in with </Text>
+        <Text style={styles.dividerText}>sign up with </Text>
         <View style={styles.dividerLine} />
       </View>
 
@@ -71,4 +71,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

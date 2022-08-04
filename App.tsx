@@ -1,10 +1,10 @@
-import SignUp from "./src/screens/SignUp";
-import SignIn from "./src/screens/SignIn";
-import ResetPassword from "./src/screens/ResetPassword";
-import EmailVerify from "./src/screens/EmailVerify";
+import SignUp from "./src/screens/auth/SignUp";
+import SignIn from "./src/screens/auth/SignIn";
+import ResetPassword from "./src/screens/auth/ResetPassword";
+import EmailVerify from "./src/screens/auth/EmailVerify";
 import Welcome from "./src/screens/Welcome";
 
-import Home from "./src/screens/dashboard/HomeScreen";
+import Home from "./src/screens/Store";
 import Cart from "./src/screens/dashboard/CartScreen";
 import Favourites from "./src/screens/dashboard/FavouritesScreen";
 
@@ -17,6 +17,7 @@ import { View } from "react-native";
 import { styles } from "./src/styles/global-styles";
 import Orders from "./src/screens/dashboard/Orders";
 import CartScreen from "./src/screens/dashboard/CartScreen";
+import Store from "./src/screens/Store";
 
 const switchNavigator = createSwitchNavigator({
   authFlow: createStackNavigator(
@@ -47,7 +48,7 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <Favourites />
+        <Store />
       </View>
     </SafeAreaProvider>
   );
