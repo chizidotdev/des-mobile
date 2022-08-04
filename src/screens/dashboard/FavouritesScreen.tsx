@@ -48,7 +48,6 @@ export default Favourites;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f9f9f9",
     flex: 1,
     margin: 20,
   },

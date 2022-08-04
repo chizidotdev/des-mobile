@@ -14,15 +14,23 @@ import EmailVerify from "./src/screens/auth/EmailVerify";
 import Favourites from "./src/screens/dashboard/FavouritesScreen";
 import Cart from "./src/screens/dashboard/CartScreen";
 import Orders from "./src/screens/dashboard/Orders";
-import CartScreen from "./src/screens/dashboard/CartScreen";
 
 import Welcome from "./src/screens/Welcome";
-import Home from "./src/screens/Store";
 import Store from "./src/screens/Store";
 import ProductDetail from "./src/screens/ProductDetail";
 import Category from "./src/screens/Category";
 
 const switchNavigator = createSwitchNavigator({
+  mainFlow: createBottomTabNavigator(
+    {
+      Store,
+      ProductDetail,
+      Cart,
+      Favourites,
+      Orders,
+    },
+    { tabBarOptions: { showIcon: true }, tabBarComponent: () => <IconUI name="home" /> }
+  ),
   authFlow: createStackNavigator(
     {
       Welcome,
@@ -38,14 +46,9 @@ const switchNavigator = createSwitchNavigator({
       },
     }
   ),
-  mainFlow: createBottomTabNavigator({
-    Home,
-    Cart,
-    Favourites,
-  }),
 });
 
-createAppContainer(switchNavigator);
+// export default createAppContainer(switchNavigator);
 
 const App = () => {
   return (

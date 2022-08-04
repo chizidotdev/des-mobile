@@ -1,40 +1,37 @@
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import React from "react";
-import {
-  ActiveOrderCard,
-  CompletedOrderCard,
-} from "../../components/Cards/OrderCard";
+import { CompletedOrderCard } from "../../components/Cards/OrderCard";
 import { ScrollView } from "react-native-gesture-handler";
 
-const completedOrders = [
-  {
-    title: "iPad Mini",
-    desc: "256gb variant",
-    price: 799.99,
-    qty: 1,
-  },
-  {
-    title: "iPad Pro",
-    desc: "M1 variant",
-    price: 1099.99,
-    qty: 2,
-  },
-];
+// const completedOrders = [
+//   {
+//     title: "iPad Mini",
+//     desc: "256gb variant",
+//     price: 799.99,
+//     qty: 1,
+//   },
+//   {
+//     title: "iPad Pro",
+//     desc: "M1 variant",
+//     price: 1099.99,
+//     qty: 2,
+//   },
+// ];
 
-const activeOrders = [
-  {
-    title: "iPad Mini",
-    desc: "256gb variant",
-    price: 799.99,
-    qty: 1,
-  },
-  {
-    title: "iPad Pro",
-    desc: "M1 variant",
-    price: 1099.99,
-    qty: 2,
-  },
-];
+// const activeOrders = [
+//   {
+//     title: "iPad Mini",
+//     desc: "256gb variant",
+//     price: 799.99,
+//     qty: 1,
+//   },
+//   {
+//     title: "iPad Pro",
+//     desc: "M1 variant",
+//     price: 1099.99,
+//     qty: 2,
+//   },
+// ];
 
 const Orders = () => {
   return (
@@ -62,7 +59,6 @@ export default Orders;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f9f9f9",
     flex: 1,
   },
   statusContainer: {
