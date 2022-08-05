@@ -31,7 +31,7 @@ const Welcome = ({ navigation }: WelcomeScreenProps) => {
             <Text>&nbsp;Google</Text>
           </ButtonUI>
         </View>
-        <ButtonUI to="Home" style={styles.start}>
+        <ButtonUI to="MainScreen" style={styles.start}>
           Start with email or phone
         </ButtonUI>
         {/* <Button title="Home" onPress={() => navigation.navigate("SignIn")} /> */}

@@ -19,7 +19,7 @@ import Category from "./src/screens/Category";
 import Notifications from "./src/screens/Notifications";
 
 export type AuthStackParamList = {
-  Home: undefined;
+  MainScreen: undefined;
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
@@ -51,7 +51,7 @@ const AuthStackNavigator = () => {
       <AuthStack.Navigator>
         <AuthStack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
         <AuthStack.Screen
-          name="Home"
+          name="MainScreen"
           component={MainScreenNavigator}
           options={{ headerShown: false }}
         />

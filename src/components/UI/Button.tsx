@@ -1,4 +1,4 @@
-import { Pressable, StyleProp, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleProp, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { ReactNode } from "react";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 
