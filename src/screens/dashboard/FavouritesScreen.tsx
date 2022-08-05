@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { View, SafeAreaView, StyleSheet } from "react-native";
 import { Text } from "@rneui/themed";
 import { ScrollView } from "react-native-gesture-handler";
 import { FavouriteCard } from "../../components/Cards/FavouriteCard";
 import IconUI from "../../components/UI/Icon";
+import { ServiceContext } from "../../context/ServiceContext";
 
 const Favourites = () => {
+  const { popular } = useContext(ServiceContext);
+
+  const service = popular[0];
+
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -34,9 +39,12 @@ const Favourites = () => {
             </View>
           </View>
           <View>
-            <FavouriteCard />
-            <FavouriteCard />
-            <FavouriteCard />
+            <FavouriteCard
+              title={service.name}
+              numReviews={service.numReviews}
+              price={service.price}
+              rating={service.rating}
+            />
           </View>
         </View>
       </SafeAreaView>

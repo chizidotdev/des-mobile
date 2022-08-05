@@ -7,9 +7,12 @@ import { CommonActions, useNavigation } from "@react-navigation/native";
 
 interface ListProps {
   to?: string;
+  name: string;
+  rating: number;
+  numReviews: number;
 }
 
-export const Featured = ({ to: key }: ListProps) => {
+export const Featured = ({ to: key, name, rating, numReviews }: ListProps) => {
   const styles = featuredStyles;
   const navigation = useNavigation();
 
@@ -29,8 +32,8 @@ export const Featured = ({ to: key }: ListProps) => {
             <View style={styles.top}>
               <View style={styles.bottom}>
                 <Text>
-                  4.5&nbsp;
-                  <Text style={{ color: "#9796A1" }}>(25+)</Text>
+                  {rating}&nbsp;
+                  <Text style={{ color: "#9796A1" }}>({numReviews})</Text>
                 </Text>
               </View>
               <View>
@@ -43,7 +46,7 @@ export const Featured = ({ to: key }: ListProps) => {
 
       <View style={styles.titleContainer}>
         <Text h4 style={styles.title}>
-          Ipad Pro Mini
+          {name}
         </Text>
         <View style={styles.descContainer}>
           <Text style={styles.desc}>Fast Delivery</Text>
@@ -57,7 +60,7 @@ export const Featured = ({ to: key }: ListProps) => {
   );
 };
 
-export const Popular = ({ to: key }: ListProps) => {
+export const Popular = ({ to: key, name, rating, numReviews }: ListProps) => {
   const styles = featuredStyles;
   const navigation = useNavigation();
   const handleNavigate = (key: string) => {
@@ -76,8 +79,8 @@ export const Popular = ({ to: key }: ListProps) => {
             <View style={styles.top}>
               <View style={styles.bottom}>
                 <Text>
-                  4.5&nbsp;
-                  <Text style={{ color: "#9796A1" }}>(25+)</Text>
+                  {rating}&nbsp;
+                  <Text style={{ color: "#9796A1" }}>({numReviews})</Text>
                 </Text>
               </View>
               <View>
@@ -90,7 +93,7 @@ export const Popular = ({ to: key }: ListProps) => {
 
       <View style={styles.titleContainer}>
         <Text h4 style={styles.title}>
-          Ipad Pro Mini
+          {name}
         </Text>
         <View style={styles.descContainer}>
           <Text style={styles.desc}>Fast Delivery</Text>

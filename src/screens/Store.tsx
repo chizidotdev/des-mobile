@@ -1,21 +1,25 @@
 import { View, ScrollView, SafeAreaView, StyleSheet } from "react-native";
-import React, { useState } from "react";
-import Heading from "../../components/Store/Heading";
+import React, { useContext, useState } from "react";
+import Heading from "../components/Store/Heading";
 import { Text } from "@rneui/themed";
-import InputUI from "../../components/UI/Input";
-import IconUI from "../../components/UI/Icon";
-import { ProductStackParamList } from "../../../App";
+import InputUI from "../components/UI/Input";
+import IconUI from "../components/UI/Icon";
+import { ProductStackParamList } from "../../App";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Featured, Popular } from "../../components/Store/StoreLists";
-import ButtonUI from "../../components/UI/Button";
+import { Featured, Popular } from "../components/Store/StoreLists";
+import ButtonUI from "../components/UI/Button";
+import { safeAreaStyles } from "../styles/global-styles";
+import { ServiceContext } from "../context/ServiceContext";
 
 type StoreScreenProps = NativeStackScreenProps<ProductStackParamList, "Store">;
 
 const Store = ({ navigation }: StoreScreenProps) => {
   const [value, setValue] = useState("");
 
+  const { featured, popular } = useContext(ServiceContext);
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={safeAreaStyles.AndroidSafeArea}>
       <ScrollView>
         <View style={styles.container}>
           <Heading />
@@ -44,14 +48,22 @@ const Store = ({ navigation }: StoreScreenProps) => {
             <View style={styles.featuredHeader}>
               <Text h4>Featured Services</Text>
               <View>
-                <ButtonUI type="link">View All</ButtonUI>
+                <ButtonUI type="link" to="Category">
+                  View All
+                </ButtonUI>
               </View>
             </View>
 
             <ScrollView horizontal style={styles.featured}>
-              <Featured to="Details" />
-              <Featured />
-              <Featured />
+              {featured.map((item: any) => (
+                <Featured
+                  key={item.id}
+                  name={item.name}
+                  numReviews={item.numReviews}
+                  rating={item.rating}
+                  to="Details"
+                />
+              ))}
             </ScrollView>
           </View>
 
@@ -59,14 +71,22 @@ const Store = ({ navigation }: StoreScreenProps) => {
             <View style={styles.featuredHeader}>
               <Text h4>Popular Services</Text>
               <View>
-                <ButtonUI type="link">View All</ButtonUI>
+                <ButtonUI type="link" to="Category">
+                  View All
+                </ButtonUI>
               </View>
             </View>
 
             <ScrollView horizontal style={styles.featured}>
-              <Popular to="Details" />
-              <Popular />
-              <Popular />
+              {popular.map((item: any) => (
+                <Popular
+                  key={item.id}
+                  name={item.name}
+                  numReviews={item.numReviews}
+                  rating={item.rating}
+                  to="Details"
+                />
+              ))}
             </ScrollView>
           </View>
         </View>
@@ -93,7 +113,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     zIndex: 5,
     position: "absolute",
-    top: 40,
+    top: 35,
     left: 10,
   },
   featuredContainer: {

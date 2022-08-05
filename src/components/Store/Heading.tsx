@@ -1,16 +1,22 @@
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Pressable, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import React from "react";
 import { Text } from "@rneui/themed";
 import IconUI from "../UI/Icon";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 const Heading = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <View>
-        <Ionicons name="menu" size={30} />
-      </View>
+      {/* <Pressable onPress={() => navigation.dispatch(DrawerActions.openDrawer())}> */}
+      <Pressable>
+        <TouchableOpacity>
+          <Ionicons name="menu" size={30} />
+        </TouchableOpacity>
+      </Pressable>
 
       <View style={styles.center}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -39,7 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 20,
   },
   center: {
     alignItems: "center",

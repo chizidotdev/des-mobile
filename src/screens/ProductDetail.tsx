@@ -13,6 +13,10 @@ import IconUI from "../components/UI/Icon";
 import ButtonUI from "../components/UI/Button";
 import { useNavigation } from "@react-navigation/native";
 
+interface ProductDetailProps {
+  id: number;
+}
+
 const AddOnItem = () => {
   return (
     <View style={styles.addOn}>
@@ -31,7 +35,7 @@ const AddOnItem = () => {
   );
 };
 
-const ProductDetail = () => {
+const ProductDetail = ({ id }: ProductDetailProps) => {
   const navigation = useNavigation();
 
   return (

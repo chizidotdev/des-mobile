@@ -6,10 +6,12 @@ import IconUI from "../UI/Icon";
 interface FavouritesCardProps {
   title?: string;
   price?: number;
-  qty?: number;
+  rating?: number;
+  numReviews?: number;
+  image?: string;
 }
 
-export const FavouriteCard = ({ title, price, qty }: FavouritesCardProps) => {
+export const FavouriteCard = ({ title, price, rating, numReviews, image }: FavouritesCardProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -20,30 +22,25 @@ export const FavouriteCard = ({ title, price, qty }: FavouritesCardProps) => {
         >
           <View style={styles.top}>
             <View style={styles.price}>
-              <Text style={styles.text}>$510.5</Text>
+              <Text style={styles.text}>${price}</Text>
             </View>
             <View>
-              <IconUI
-                name="heart"
-                variant="fill"
-                size={20}
-                style={{ width: 40, height: 40 }}
-              />
+              <IconUI name="heart" variant="fill" size={20} style={{ width: 40, height: 40 }} />
             </View>
           </View>
         </ImageBackground>
         <View style={styles.bottom}>
           <Text>
-            4.5&nbsp;
+            {rating}&nbsp;
             {/* <IconUI name="star" size={8} style={{ width: 10, height: 10 }} /> */}
-            <Text style={{ color: "#9796A1" }}>(25+)</Text>
+            <Text style={{ color: "#9796A1" }}>({numReviews}+)</Text>
           </Text>
         </View>
       </View>
 
       <View style={styles.titleContainer}>
         <Text h4 style={styles.title}>
-          Ipad Pro Mini
+          {title}
         </Text>
         <Text style={styles.desc}>Newer Variant</Text>
       </View>

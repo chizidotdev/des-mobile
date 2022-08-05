@@ -1,6 +1,7 @@
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import SignUp from "./src/screens/auth/SignUp";
@@ -13,10 +14,14 @@ import Cart from "./src/screens/dashboard/CartScreen";
 import Orders from "./src/screens/dashboard/Orders";
 
 import Welcome from "./src/screens/Welcome";
-import Store from "./src/screens/Store/Store";
+import Store from "./src/screens/Store";
 import ProductDetail from "./src/screens/ProductDetail";
 import Category from "./src/screens/Category";
 import Notifications from "./src/screens/Notifications";
+
+import { ServiceProvider } from "./src/context/ServiceContext";
+import { AuthProvider } from "./src/context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export type AuthStackParamList = {
   MainScreen: undefined;
@@ -31,9 +36,11 @@ export type ProductStackParamList = {
   Store: undefined;
   Category: undefined;
   Details: undefined;
+  Drawer: undefined;
 };
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 const ProductStack = createNativeStackNavigator<ProductStackParamList>();
 
@@ -45,22 +52,34 @@ const MyTheme = {
   },
 };
 
+const client = new QueryClient();
+
 const AuthStackNavigator = () => {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <AuthStack.Navigator>
-        <AuthStack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-        <AuthStack.Screen
-          name="MainScreen"
-          component={MainScreenNavigator}
-          options={{ headerShown: false }}
-        />
-        <AuthStack.Screen name="SignIn" component={SignIn} />
-        <AuthStack.Screen name="SignUp" component={SignUp} />
-        <AuthStack.Screen name="ResetPassword" component={ResetPassword} />
-        <AuthStack.Screen name="EmailVerify" component={EmailVerify} />
-      </AuthStack.Navigator>
-    </NavigationContainer>
+    <QueryClientProvider client={client}>
+      <AuthProvider>
+        <ServiceProvider>
+          <NavigationContainer theme={MyTheme}>
+            <AuthStack.Navigator>
+              <AuthStack.Screen
+                name="Welcome"
+                component={Welcome}
+                options={{ headerShown: false }}
+              />
+              <AuthStack.Screen
+                name="MainScreen"
+                component={MainScreenNavigator}
+                options={{ headerShown: false }}
+              />
+              <AuthStack.Screen name="SignIn" component={SignIn} />
+              <AuthStack.Screen name="SignUp" component={SignUp} />
+              <AuthStack.Screen name="ResetPassword" component={ResetPassword} />
+              <AuthStack.Screen name="EmailVerify" component={EmailVerify} />
+            </AuthStack.Navigator>
+          </NavigationContainer>
+        </ServiceProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 };
 
@@ -75,6 +94,16 @@ const ProductStackNavigator = () => {
       />
       <ProductStack.Screen name="Category" component={Category} options={{ headerShown: false }} />
     </ProductStack.Navigator>
+  );
+};
+
+const DrawerNavigator = () => {
+  return (
+    <Drawer.Navigator initialRouteName="Cart">
+      <Tab.Screen name="Home" component={ProductStackNavigator} options={{ headerShown: false }} />
+      <Drawer.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
+      <Drawer.Screen name="Orders" component={Orders} />
+    </Drawer.Navigator>
   );
 };
 
@@ -107,6 +136,7 @@ const MainScreenNavigator = () => {
       })}
     >
       <Tab.Screen name="Home" component={ProductStackNavigator} />
+      {/* <Tab.Screen name="Drawer" component={DrawerNavigator} /> */}
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Favourites" component={Favourites} />
       <Tab.Screen name="Notifications" component={Notifications} />
