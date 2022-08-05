@@ -30,7 +30,6 @@ export const Featured = ({ to: key }: ListProps) => {
               <View style={styles.bottom}>
                 <Text>
                   4.5&nbsp;
-                  {/* <IconUI name="star" size={8} style={{ width: 10, height: 10 }} /> */}
                   <Text style={{ color: "#9796A1" }}>(25+)</Text>
                 </Text>
               </View>
@@ -78,7 +77,6 @@ export const Popular = ({ to: key }: ListProps) => {
               <View style={styles.bottom}>
                 <Text>
                   4.5&nbsp;
-                  {/* <IconUI name="star" size={8} style={{ width: 10, height: 10 }} /> */}
                   <Text style={{ color: "#9796A1" }}>(25+)</Text>
                 </Text>
               </View>
@@ -110,7 +108,7 @@ const featuredStyles = StyleSheet.create({
   container: {
     marginTop: 20,
     marginRight: 20,
-    width: "300",
+    width: 300,
     justifyContent: "space-evenly",
   },
   wrapper: {
