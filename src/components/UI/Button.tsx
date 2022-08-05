@@ -12,7 +12,6 @@ interface ButtonProps {
 
 const ButtonUI = ({ children, style, variant, type, to: key }: ButtonProps) => {
   const navigation = useNavigation();
-
   const handleNavigate = (key: string) => {
     navigation.dispatch(CommonActions.navigate({ name: key }));
   };
@@ -28,21 +27,21 @@ const ButtonUI = ({ children, style, variant, type, to: key }: ButtonProps) => {
   }
 
   return (
-    <View
-      style={
-        variant === "transparent"
-          ? [styles.button, styles.transparentButton, style]
-          : [styles.button, style]
-      }
-    >
-      <Pressable onPress={() => key && key && handleNavigate(key)}>
+    <TouchableOpacity onPress={() => key && key && handleNavigate(key)}>
+      <View
+        style={
+          variant === "transparent"
+            ? [styles.button, styles.transparentButton, style]
+            : [styles.button, style]
+        }
+      >
         <Text
           style={variant === "transparent" ? [styles.text, styles.transparentText] : [styles.text]}
         >
           {children}
         </Text>
-      </Pressable>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -57,8 +56,8 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: "#FA7913",
     boxShadow: "0px 4px 5px rgba(0, 0, 0, 0.3)",
-    shadowColor: "rgba(0, 0, 0, 0.1)",
-    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "rgba(0, 0, 0, 0.3)",
+    shadowOffset: { width: 1, height: 5 },
     shadowOpacity: 5,
   },
   text: {

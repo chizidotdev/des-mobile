@@ -1,6 +1,6 @@
 import { Text } from "@rneui/themed";
 import React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, ViewStyle } from "react-native";
 
 interface InputProps {
   label?: string;
@@ -8,6 +8,8 @@ interface InputProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
   secure?: boolean;
+  style?: ViewStyle;
+  inputStyle?: ViewStyle;
 }
 
 const InputUI: React.FC<InputProps> = ({
@@ -16,11 +18,13 @@ const InputUI: React.FC<InputProps> = ({
   setValue,
   placeholder,
   secure,
+  style,
+  inputStyle,
 }) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputContainer, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
-      <View style={styles.inputWrapper}>
+      <View style={[styles.inputWrapper, inputStyle]}>
         <TextInput
           // keyboardType=""
           style={styles.input}

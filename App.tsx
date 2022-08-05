@@ -1,15 +1,7 @@
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-// import { createBottomTabNavigator } from "react-navigation-tabs";
-
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { View } from "react-native";
-import { styles } from "./src/styles/global-styles";
 
 import SignUp from "./src/screens/auth/SignUp";
 import SignIn from "./src/screens/auth/SignIn";
@@ -21,9 +13,10 @@ import Cart from "./src/screens/dashboard/CartScreen";
 import Orders from "./src/screens/dashboard/Orders";
 
 import Welcome from "./src/screens/Welcome";
-import Store from "./src/screens/Store";
+import Store from "./src/screens/Store/Store";
 import ProductDetail from "./src/screens/ProductDetail";
 import Category from "./src/screens/Category";
+import Notifications from "./src/screens/Notifications";
 
 export type AuthStackParamList = {
   Home: undefined;
@@ -34,8 +27,15 @@ export type AuthStackParamList = {
   ResetPassword: undefined;
 };
 
+export type ProductStackParamList = {
+  Store: undefined;
+  Category: undefined;
+  Details: undefined;
+};
+
 const Tab = createBottomTabNavigator();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
+const ProductStack = createNativeStackNavigator<ProductStackParamList>();
 
 const MyTheme = {
   ...DefaultTheme,
@@ -50,7 +50,11 @@ const AuthStackNavigator = () => {
     <NavigationContainer theme={MyTheme}>
       <AuthStack.Navigator>
         <AuthStack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-        <AuthStack.Screen name="Home" component={MainScreenNavigator} />
+        <AuthStack.Screen
+          name="Home"
+          component={MainScreenNavigator}
+          options={{ headerShown: false }}
+        />
         <AuthStack.Screen name="SignIn" component={SignIn} />
         <AuthStack.Screen name="SignUp" component={SignUp} />
         <AuthStack.Screen name="ResetPassword" component={ResetPassword} />
@@ -60,76 +64,55 @@ const AuthStackNavigator = () => {
   );
 };
 
+const ProductStackNavigator = () => {
+  return (
+    <ProductStack.Navigator>
+      <ProductStack.Screen name="Store" component={Store} options={{ headerShown: false }} />
+      <ProductStack.Screen
+        name="Details"
+        component={ProductDetail}
+        options={{ headerShown: false }}
+      />
+      <ProductStack.Screen name="Category" component={Category} options={{ headerShown: false }} />
+    </ProductStack.Navigator>
+  );
+};
+
 const MainScreenNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName = "";
+          let iconName = "ios-compass";
           let rn = route.name;
 
           if (rn === "Home") {
-            iconName = focused ? "ios-home" : "ios-home";
+            iconName = focused ? "ios-compass" : "ios-compass";
           } else if (rn === "Favourites") {
             iconName = focused ? "ios-heart" : "ios-heart";
+          } else if (rn === "Notifications") {
+            iconName = focused ? "ios-notifications" : "ios-notifications";
           } else if (rn === "Cart") {
-            iconName = focused ? "ios-cart" : "ios-cart";
+            iconName = focused ? "ios-basket" : "ios-basket";
           } else if (rn === "Orders") {
-            iconName = focused ? "ios-list" : "ios-list";
+            iconName = focused ? "ios-help-circle" : "ios-help-circle";
+          } else if (rn === "Support") {
+            iconName = focused ? "ios-help-circle" : "ios-help-circle";
           }
-          return <Ionicons name={iconName!} size={size} color={color} />;
+          return <Ionicons name={iconName!} size={size} color={focused ? "#FA7913" : "#D3D1D8"} />;
         },
         tabBarShowLabel: false,
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Store" component={Store} />
-      <Tab.Screen name="Favourites" component={Favourites} />
+      <Tab.Screen name="Home" component={ProductStackNavigator} />
       <Tab.Screen name="Cart" component={Cart} />
+      <Tab.Screen name="Favourites" component={Favourites} />
+      <Tab.Screen name="Notifications" component={Notifications} />
       <Tab.Screen name="Orders" component={Orders} />
     </Tab.Navigator>
   );
 };
 
 export default AuthStackNavigator;
-
-// const switchNavigator = createSwitchNavigator({
-//   mainFlow: createBottomTabNavigator(
-//     {
-//       Store,
-//       ProductDetail,
-//       Cart,
-//       Favourites,
-//       Orders,
-//     },
-//   ),
-//   authFlow: createStackNavigator(
-//     {
-//       Welcome,
-//       SignIn,
-//       SignUp,
-//       ResetPassword,
-//       EmailVerify,
-//     },
-//     {
-//       initialRouteName: "Welcome",
-//       defaultNavigationOptions: {
-//         title: "Design Synchrony",
-//       },
-//     }
-//   ),
-// });
-
-// export default createAppContainer(switchNavigator);
-
-const DevApp = () => {
-  return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        <Category />
-      </View>
-    </SafeAreaProvider>
-  );
-};
-// export default App;

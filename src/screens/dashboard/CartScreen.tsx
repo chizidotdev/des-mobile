@@ -1,8 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
+import { Text } from "@rneui/themed";
 import React, { useState } from "react";
 import { CartCard } from "../../components/Cards/CartCard";
 import InputUI from "../../components/UI/Input";
 import ButtonUI from "../../components/UI/Button";
+import IconUI from "../../components/UI/Icon";
+import { useNavigation } from "@react-navigation/native";
 
 const cartData = [
   {
@@ -22,8 +25,22 @@ const cartData = [
 const CartScreen = () => {
   const [promoCode, setPromoCode] = useState("");
 
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
+      <View style={styles.cart}>
+        <Pressable onPress={() => navigation.goBack()} style={styles.backIcon}>
+          <IconUI
+            name="chevron-left"
+            variant="fill"
+            size={20}
+            style={styles.backIcon}
+            textColor="#000"
+          />
+        </Pressable>
+        <Text h4>Cart</Text>
+      </View>
       <View>
         {cartData.map((item, idx) => (
           <CartCard
@@ -36,11 +53,7 @@ const CartScreen = () => {
         ))}
       </View>
       <View>
-        <InputUI
-          value={promoCode}
-          setValue={setPromoCode}
-          placeholder="Promo Code"
-        />
+        <InputUI value={promoCode} setValue={setPromoCode} placeholder="Promo Code" />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.details}>
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 20,
     flex: 1,
-    marginVertical: 50,
+    marginVertical: 30,
     justifyContent: "space-evenly",
   },
   detailsContainer: {},
@@ -93,5 +106,19 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  cart: {
+    alignItems: "center",
+    position: "relative",
+  },
+  backIcon: {
+    position: "absolute",
+    top: -5,
+    left: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    borderColor: "#fff",
+    backgroundColor: "#fff",
   },
 });

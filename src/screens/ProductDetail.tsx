@@ -1,8 +1,17 @@
 import React from "react";
-import { View, ImageBackground, StyleSheet, SafeAreaView, ScrollView, Image } from "react-native";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  Pressable,
+} from "react-native";
 import { Text } from "@rneui/themed";
 import IconUI from "../components/UI/Icon";
 import ButtonUI from "../components/UI/Button";
+import { useNavigation } from "@react-navigation/native";
 
 const AddOnItem = () => {
   return (
@@ -23,6 +32,8 @@ const AddOnItem = () => {
 };
 
 const ProductDetail = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -33,16 +44,18 @@ const ProductDetail = () => {
             style={styles.imgStyle}
           >
             <View style={styles.top}>
-              <View style={styles.price}>
-                <IconUI
-                  name="chevron-left"
-                  variant="fill"
-                  size={20}
-                  color="#fff"
-                  textColor="#000"
-                  style={{ width: 40, height: 40, borderRadius: 10 }}
-                />
-              </View>
+              <Pressable onPress={() => navigation.goBack()}>
+                <View style={styles.price}>
+                  <IconUI
+                    name="chevron-left"
+                    variant="fill"
+                    size={20}
+                    color="#fff"
+                    textColor="#000"
+                    style={{ width: 40, height: 40, borderRadius: 10 }}
+                  />
+                </View>
+              </Pressable>
               <View>
                 <IconUI name="heart" variant="fill" size={20} style={{ width: 40, height: 40 }} />
               </View>

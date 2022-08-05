@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Store = () => {
+const Notifications = () => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Text>Notifications</Text>
     </View>
   );
 };
 
-export default Store;
+export default Notifications;
